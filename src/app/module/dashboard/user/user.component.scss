@@ -1,0 +1,134 @@
+
+.outer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.profile {
+    display: flex;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 50%;
+    max-width: 900px;
+    transform: scale(0.95);
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.profilepic {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f0f0f0;
+}
+
+.profilepic img {
+    border-radius: 50%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.profilepic img:hover {
+    transform: scale(1.1);
+    overflow: hidden;
+}
+
+.detail {
+    flex: 2;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 10px 0;
+}
+
+h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+}
+/* Back Button Styles */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.back-button a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+    background-color: #e9ecef;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back-button a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+@keyframes fadeIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.loader {
+    width: 84px;
+    height: 84px;
+    position: relative;
+    overflow: hidden;
+  }
+  .loader:before , .loader:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width:64px;
+    height: 64px;
+    border-radius: 50%;
+    background:#000000;
+    transform: translate(-50% , 100%)  scale(0);
+    animation: push 2s infinite ease-in;
+  }
+  .loader:after {
+  animation-delay: 1s;
+  }
+  @keyframes push {
+      0% {
+        transform: translate(-50% , 100%)  scale(1);
+      }
+      15% , 25%{
+        transform: translate(-50% , 50%)  scale(1);
+      }
+    50% , 75% {
+        transform: translate(-50%, -30%) scale(0.5);
+      }
+    80%,  100% {
+        transform: translate(-50%, -50%) scale(0);
+      }
+  }

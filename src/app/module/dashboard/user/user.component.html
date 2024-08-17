@@ -1,1 +1,37 @@
-<p>user works!</p>
+<div class="back-button">
+    <a routerLink="/home/page/1">← Back to Main Menu</a>
+</div>
+<div class="outer">
+    @if (dataload) {
+    <div class="profile">
+       
+        <div class="profilepic">
+            <img [src]="user.avatar" alt="Profile Picture">
+        </div>
+        <div class="detail">
+            <table>
+                <tr>
+                    <td>
+                        <h4>First Name</h4>
+                        <p>{{user.first_name}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Last Name</h4>
+                        <p>{{user.last_name}}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Email</h4>
+                        <p>{{user.email}}</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+}@else {
+    <span class="loader"></span>
+}
+</div>

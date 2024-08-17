@@ -8,7 +8,6 @@ import { tap, shareReplay } from 'rxjs/operators';
 })
 export class UserService {
 
-
   private cache = new Map<string, any>();
 
   constructor(private http: HttpClient) {}
@@ -20,7 +19,7 @@ export class UserService {
     } else {
       return this.http.get(`https://reqres.in/api/users?page=${page}`).pipe(
         tap(data => this.cache.set(cacheKey, data)),
-        shareReplay(1) // Ensures the data is shared among subscribers
+        shareReplay(1)
       );
     }
   }
@@ -36,5 +35,16 @@ export class UserService {
       );
     }
   }
-}
 
+  searchUsersById(id: string): Observable<any[]> {
+    const cacheKey = `searchUser-${id}`;
+    if (this.cache.has(cacheKey)) {
+      return of(this.cache.get(cacheKey));
+    } else {
+      return this.http.get<any[]>(`https://reqres.in/api/users/${id}`).pipe(
+        tap(data => this.cache.set(cacheKey, data)),
+        shareReplay(1)
+      );
+    }
+  }
+}

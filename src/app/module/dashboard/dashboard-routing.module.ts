@@ -5,11 +5,17 @@ import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {
-    path:'',
-    component:HomeComponent
-  },{
-    path:'user/:id',
-    component:UserComponent
+    path: '',
+    redirectTo: 'page/1',  // Redirecting to a default page number
+    pathMatch: 'full'
+  },
+  {
+    path: 'page/:pageno',
+    component: HomeComponent
+  },
+  {
+    path: 'user/:id',
+    component: UserComponent
   }
 ];
 

@@ -1,68 +1,69 @@
 <div class="navigation">
   <h1>Dashboard</h1>
-  <div class="search">
-    <label for="search">Enter your ID</label>
-  <input type="search" id="search" name="search">
-  
+  <div class="search-container">
+    <input 
+  type="text" 
+  placeholder="Search by User ID..." 
+  (input)="onSearch($event)"
+/>
+    <ul *ngIf="searchResults?.length" class="search-results">
+      <li 
+        *ngFor="let user of searchResults" 
+        (click)="openProfile(user.id)" 
+        class="search-result-item"
+      >
+        {{ user.first_name }} {{ user.last_name }} (ID: {{ user.id }})
+      </li>
+    </ul>
+  </div>
 </div>
-</div>
-<!-- {{user | json}} -->
+
 <div class="outer">
-  <div class="card" *ngFor="let u of user.data">
-    <div class="card-image" >
-      <img [src]="u.avatar" alt="profile one">
+  @if(user.data.length<=0){
+  <span class="loader"></span>
+  <span class="loader"></span>
+  <span class="loader"></span>
+  <span class="loader"></span>
+  <span class="loader"></span>
+  <span class="loader"></span>
+  }@else {
+
+  <div class="card" *ngFor="let u of user.data" (click)="openProfile(u.id)">
+    <div class="card-image">
+      <img [src]="u.avatar" alt="{{u.first_name}}'s profile picture">
     </div>
     <div class="details">
-    <h2>{{u.first_name}} {{u.last_name}}
-      <br>
+      <h2>{{u.first_name}} {{u.last_name}}</h2>
       <span class="email">{{u.email}}</span>
-    </h2>
-  </div>
-  </div>
- </div>
-
- <div class="pagination">
-  
- </div>
- 
- <!-- <div class="outer">
-<div class="card-wrapper">
-      
-  <div class="card" *ngFor="let u of user.data">
-    
-    <div class="card-image">
-      <img [src]="u.avatar" alt="profile one">
     </div>
-
-  <ul class="social-icons">
-    <li>
-      <a href="">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-    </li>
-    <li>
-      <a href="">
-        <i class="fab fa-instagram"></i>
-      </a>
-    </li>
-    <li>
-      <a href="">
-        <i class="fab fa-twitter"></i>
-      </a>
-    </li>
-    <li>
-      <a href="">
-        <i class="fab fa-dribbble"></i>
-      </a>
-    </li>
-  </ul>
-
-  <div class="details">
-    <h2>{{u.first_name}} {{u.last_name}}
-      <br>
-      <span class="email">{{u.email}}</span>
-    </h2>
-  </div>
+  </div>}
 </div>
-</div>
+
+<mat-paginator
+  #paginator
+  class="demo-paginator"
+  (page)="handlePageEvent($event)"
+  [length]="length"
+  [pageSize]="pageSize"
+  [pageIndex]="pageIndex"
+ 
+  aria-label="Select page"
+></mat-paginator>
+
+
+<!-- <div class="paginator">
+  <button
+    *ngFor="let page of pages"
+    class="page-link"
+    [routerLink]="['/page', page]"
+    [class.active]="page === currentPage"
+    (click)="getserivce(page)"
+  >
+    {{ page }}
+  </button>
 </div> -->
+
+
+<!-- [disabled]="disabled"
+[showFirstLastButtons]="showFirstLastButtons"
+[hidePageSize]="hidePageSize" -->
