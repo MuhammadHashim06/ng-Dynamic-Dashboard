@@ -1,0 +1,68 @@
+<div class="navigation">
+  <h1>Dashboard</h1>
+  <div class="search">
+    <label for="search">Enter your ID</label>
+  <input type="search" id="search" name="search">
+  
+</div>
+</div>
+<!-- {{user | json}} -->
+<div class="outer">
+  <div class="card" *ngFor="let u of user.data">
+    <div class="card-image" >
+      <img [src]="u.avatar" alt="profile one">
+    </div>
+    <div class="details">
+    <h2>{{u.first_name}} {{u.last_name}}
+      <br>
+      <span class="email">{{u.email}}</span>
+    </h2>
+  </div>
+  </div>
+ </div>
+
+ <div class="pagination">
+  
+ </div>
+ 
+ <!-- <div class="outer">
+<div class="card-wrapper">
+      
+  <div class="card" *ngFor="let u of user.data">
+    
+    <div class="card-image">
+      <img [src]="u.avatar" alt="profile one">
+    </div>
+
+  <ul class="social-icons">
+    <li>
+      <a href="">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a href="">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </li>
+    <li>
+      <a href="">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a href="">
+        <i class="fab fa-dribbble"></i>
+      </a>
+    </li>
+  </ul>
+
+  <div class="details">
+    <h2>{{u.first_name}} {{u.last_name}}
+      <br>
+      <span class="email">{{u.email}}</span>
+    </h2>
+  </div>
+</div>
+</div>
+</div> -->
